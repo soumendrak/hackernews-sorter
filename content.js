@@ -6,13 +6,13 @@
       // Store the original order of posts
       const stories = Array.from(document.querySelectorAll('tr.athing'));
       originalOrder = stories.map(story => story.id);
-      console.log("Initialized with", stories.length, "stories");
+    //   console.log("Initialized with", stories.length, "stories");
       
       // Log the available tables for debugging
       const tables = document.querySelectorAll('table');
-      console.log("Found", tables.length, "tables on the page");
+    //   console.log("Found", tables.length, "tables on the page");
       tables.forEach((table, index) => {
-        console.log(`Table ${index}:`, table.className, table);
+        // console.log(`Table ${index}:`, table.className, table);
       });
     }
   
@@ -32,18 +32,18 @@
       }
       
       // The second table contains the posts
-      console.log("Found posts table:", tables[1]);
+    //   console.log("Found posts table:", tables[1]);
       return tables[1];
     }
   
     function getPostDetails() {
       const stories = Array.from(document.querySelectorAll('tr.athing.submission'));
-      console.log(`Found ${stories.length} stories with class 'athing submission'`);
+    //   console.log(`Found ${stories.length} stories with class 'athing submission'`);
       
       if (stories.length === 0) {
         // Try with just 'athing' class as fallback
         const fallbackStories = Array.from(document.querySelectorAll('tr.athing'));
-        console.log(`Found ${fallbackStories.length} stories with class 'athing'`);
+        // console.log(`Found ${fallbackStories.length} stories with class 'athing'`);
         if (fallbackStories.length > 0) {
           return processStories(fallbackStories);
         }
@@ -60,7 +60,7 @@
         const id = story.id;
         const subtext = story.nextElementSibling;
         if (!subtext) {
-          console.log(`No subtext found for story ${id}`);
+        //   console.log(`No subtext found for story ${id}`);
           return;
         }
         
@@ -89,7 +89,7 @@
           }
         }
         
-        console.log(`Post ${id}: Score=${score}, Comments=${commentCount}`);
+        // console.log(`Post ${id}: Score=${score}, Comments=${commentCount}`);
         
         details.push({
           id,
@@ -224,18 +224,18 @@
   
     // Listen for messages from the popup
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      console.log("Message received:", message); // Add logging to debug
+    //   console.log("Message received:", message); // Add logging to debug
       
       if (message.action === 'sortByVotes') {
-        console.log("Sorting by votes...");
+        // console.log("Sorting by votes...");
         sortByVotes();
         sendResponse({status: "Sorted by votes"});
       } else if (message.action === 'sortByComments') {
-        console.log("Sorting by comments...");
+        // console.log("Sorting by comments...");
         sortByComments();
         sendResponse({status: "Sorted by comments"});
       } else if (message.action === 'reset') {
-        console.log("Resetting to default...");
+        // console.log("Resetting to default...");
         resetToDefault();
         sendResponse({status: "Reset to default"});
       }
@@ -249,7 +249,7 @@
       
       // Auto-sort by votes after a short delay to ensure the page is fully loaded
       setTimeout(() => {
-        console.log("Auto-sorting by votes...");
+        // console.log("Auto-sorting by votes...");
         sortByVotes();
       }, 500);
     });
