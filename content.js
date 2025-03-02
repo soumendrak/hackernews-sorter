@@ -12,7 +12,6 @@
       const tables = document.querySelectorAll('table');
     //   console.log("Found", tables.length, "tables on the page");
       tables.forEach((table, index) => {
-        // console.log(`Table ${index}:`, table.className, table);
       });
     }
   
@@ -43,7 +42,6 @@
       if (stories.length === 0) {
         // Try with just 'athing' class as fallback
         const fallbackStories = Array.from(document.querySelectorAll('tr.athing'));
-        // console.log(`Found ${fallbackStories.length} stories with class 'athing'`);
         if (fallbackStories.length > 0) {
           return processStories(fallbackStories);
         }
@@ -89,7 +87,6 @@
           }
         }
         
-        // console.log(`Post ${id}: Score=${score}, Comments=${commentCount}`);
         
         details.push({
           id,
@@ -227,15 +224,12 @@
     //   console.log("Message received:", message); // Add logging to debug
       
       if (message.action === 'sortByVotes') {
-        // console.log("Sorting by votes...");
         sortByVotes();
         sendResponse({status: "Sorted by votes"});
       } else if (message.action === 'sortByComments') {
-        // console.log("Sorting by comments...");
         sortByComments();
         sendResponse({status: "Sorted by comments"});
       } else if (message.action === 'reset') {
-        // console.log("Resetting to default...");
         resetToDefault();
         sendResponse({status: "Reset to default"});
       }
@@ -249,7 +243,6 @@
       
       // Auto-sort by votes after a short delay to ensure the page is fully loaded
       setTimeout(() => {
-        // console.log("Auto-sorting by votes...");
         sortByVotes();
       }, 500);
     });
