@@ -13,3 +13,7 @@ This repo is made with the help of Claude Sonnet 3.7 model to sort the hackernew
 - Click "Load unpacked"
 - Select the downloaded folder.
 - Now visit `https://news.ycombinator.com/front/` it will be sorted by votes.
+
+## Sponsor
+
+If this project helps you, consider [sponsoring my work on GitHub](https://github.com/sponsors/soumendrak). Your support helps fund maintenance, documentation, and continued development.
